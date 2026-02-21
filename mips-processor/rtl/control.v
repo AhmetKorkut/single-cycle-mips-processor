@@ -10,12 +10,17 @@ wire rformat,lw,sw,beq,jall,j,jump_reg;
 assign rformat =~| in;
 assign jump_reg = (~|in) & f[3]&(~f[2])&(~f[1])&(~f[0]); // 001000 = 8
 
-assign j = (~in[5])& (~in[4])&(~in[3])&(~in[2])&in[1]&(~in[0]); // 000010 = 2
-assign jall = (~in[5])& (~in[4])&(~in[3])&(~in[2])&in[1]&in[0]; // 000011 = 3
-assign lw = in[5]& (~in[4])&(~in[3])&(~in[2])&in[1]&in[0]; // 100011 = 35
-assign sw = in[5]& (~in[4])&in[3]&(~in[2])&in[1]&in[0]; //101011 = 43
+assign jump_reg = (in == 6'd32) & (f == 6'b001000);
 
-assign beq = ~in[5]& (~in[4])&(~in[3])&in[2]&(~in[1])&(~in[0]); // 000100 = 4
+// 40 = 101000
+assign j = in[5] & ~in[4] &  in[3] & ~in[2] & ~in[1] & ~in[0];
+
+// 41 = 101001
+assign jall = in[5] & ~in[4] &  in[3] & ~in[2] & ~in[1] &  in[0];
+assign lw = in[5] & ~in[4] & ~in[3] &  in[2] & ~in[1] &  in[0]; // 37 = 100101
+assign sw = in[5] & ~in[4] & ~in[3] &  in[2] &  in[1] & ~in[0]; // 38 = 100110
+assign beq = in[5] & ~in[4] & ~in[3] &  in[2] &  in[1] &  in[0]; // 39 = 100111
+
 
 assign regdest = rformat;
 
