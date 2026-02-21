@@ -52,7 +52,7 @@ module control(
     output       jal
 );
 
-    // Student: 300201032 -> base opcode 32
+    // -> base opcode 32
     localparam [7:0]
         OP_R    = 8'd32,
         OP_ADDI = 8'd33,
