@@ -1,0 +1,15 @@
+mips-processor/
+│
+├── rtl/
+│   ├── processor.v
+│   ├── alu32.v
+│   ├── control.v
+│   └── alucont.v
+│
+├── memory/
+│   ├── initIM.dat
+│   ├── initIM1.dat
+│   ├── initIM2.dat
+│   ├── initIM3.dat
+│   ├── initDM.dat
+│   └── initReg.dat
